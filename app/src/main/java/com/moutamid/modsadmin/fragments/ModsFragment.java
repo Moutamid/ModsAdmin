@@ -39,6 +39,8 @@ public class ModsFragment extends Fragment {
         binding.recy.setLayoutManager(new LinearLayoutManager(binding.getRoot().getContext()));
         binding.recy.setHasFixedSize(false);
 
+
+
         list = new ArrayList<>();
 
         Constants.databaseReference().child("mod")
@@ -51,7 +53,6 @@ public class ModsFragment extends Fragment {
                                 ItemModel itemModel = dataSnapshot.getValue(ItemModel.class);
                                 list.add(itemModel);
                             }
-
                             ItemAdapter adapter = new ItemAdapter(binding.getRoot().getContext(), list);
                             binding.recy.setAdapter(adapter);
                         }
@@ -64,5 +65,10 @@ public class ModsFragment extends Fragment {
                 });
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 }

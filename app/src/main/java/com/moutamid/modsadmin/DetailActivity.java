@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
 import com.moutamid.modsadmin.databinding.ActivityDetailBinding;
 import com.moutamid.modsadmin.models.ItemModel;
+import com.moutamid.modsadmin.models.Rating;
 
 public class DetailActivity extends AppCompatActivity {
     ActivityDetailBinding binding;
@@ -35,7 +36,9 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         binding.downloads.setText(itemModel.getDownloads());
-        binding.rating.setText(""+itemModel.getRating());
+        Rating rate = itemModel.getRating();
+        double rating = (rate.getStar1() + rate.getStar2() + rate.getStar3() + rate.getStar4() + rate.getStar5()) / 5;
+        binding.rating.setText(""+rating);
         binding.views.setText(""+itemModel.getViews());
         binding.name.setText(itemModel.getName());
         binding.version.setText(itemModel.getVersion());

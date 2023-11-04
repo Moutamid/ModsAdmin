@@ -61,7 +61,7 @@ public class UpdateActivity extends AppCompatActivity {
                 itemModel.getDownloads(),
                 Image,
                 binding.name.getEditText().getText().toString(),
-                Double.parseDouble(binding.rating.getEditText().getText().toString()),
+                itemModel.getRating(),
                 Integer.parseInt(binding.sort.getEditText().getText().toString()),
                 Integer.parseInt(binding.unSort.getEditText().getText().toString()),
                 getType(),
@@ -114,7 +114,6 @@ public class UpdateActivity extends AppCompatActivity {
         binding.description.getEditText().setText(itemModel.getDescription());
         binding.version.getEditText().setText(itemModel.getVersion());
         binding.archive.getEditText().setText(itemModel.getArchive());
-        binding.rating.getEditText().setText(itemModel.getRating() + "");
         binding.sort.getEditText().setText(itemModel.getSort() + "");
         binding.unSort.getEditText().setText(itemModel.getUnSort() + "");
 

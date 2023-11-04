@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.moutamid.modsadmin.databinding.ActivityAddNewBinding;
 import com.moutamid.modsadmin.models.ItemModel;
+import com.moutamid.modsadmin.models.Rating;
 
 import java.util.Random;
 import java.util.UUID;
@@ -70,7 +71,7 @@ public class AddNewActivity extends AppCompatActivity {
                 "0",
                 Image,
                 binding.name.getEditText().getText().toString(),
-                Double.parseDouble(binding.rating.getEditText().getText().toString()),
+                new Rating(0,0,0,0,0),
                 Integer.parseInt(binding.sort.getEditText().getText().toString()),
                 Integer.parseInt(binding.unSort.getEditText().getText().toString()),
                 getType(),

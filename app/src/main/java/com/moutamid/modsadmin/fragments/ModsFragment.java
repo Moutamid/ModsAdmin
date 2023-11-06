@@ -40,10 +40,9 @@ public class ModsFragment extends Fragment {
         binding.recy.setHasFixedSize(false);
 
 
-
         list = new ArrayList<>();
 
-        Constants.databaseReference().child("mod")
+        Constants.databaseReference().child(Constants.MOD)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

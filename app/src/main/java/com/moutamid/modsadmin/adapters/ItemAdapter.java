@@ -43,8 +43,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemVH> {
     public void onBindViewHolder(@NonNull ItemVH holder, int position) {
         ItemModel itemModel = list.get(holder.getAdapterPosition());
         holder.downloads.setText(itemModel.getDownloads());
-        Rating rate = itemModel.getRating();
-        double rating = (rate.getStar1() + rate.getStar2() + rate.getStar3() + rate.getStar4() + rate.getStar5()) / 5;
+        double rating = itemModel.getRating();
         holder.rating.setText(""+rating);
         holder.views.setText(""+itemModel.getViews());
         holder.title.setText(itemModel.getName());

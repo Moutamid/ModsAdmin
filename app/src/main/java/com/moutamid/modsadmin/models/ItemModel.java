@@ -3,7 +3,7 @@ package com.moutamid.modsadmin.models;
 public class ItemModel {
     int app_id, id;
     String archive, description, downloads, image, name;
-    Rating rating;
+    double rating;
     int sort, unSort;
     String type, version;
     int views;
@@ -11,7 +11,7 @@ public class ItemModel {
     public ItemModel() {
     }
 
-    public ItemModel(int app_id, int id, String archive, String description, String downloads, String image, String name, Rating rating, int sort, int unSort, String type, String version, int views) {
+    public ItemModel(int app_id, int id, String archive, String description, String downloads, String image, String name, double rating, int sort, int unSort, String type, String version, int views) {
         this.app_id = app_id;
         this.id = id;
         this.archive = archive;
@@ -83,11 +83,11 @@ public class ItemModel {
         this.name = name;
     }
 
-    public Rating getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(Rating rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 

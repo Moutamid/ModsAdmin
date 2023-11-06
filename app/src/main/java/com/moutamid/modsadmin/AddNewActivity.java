@@ -68,15 +68,14 @@ public class AddNewActivity extends AppCompatActivity {
                 Integer.parseInt(binding.appId.getEditText().getText().toString()), id,
                 binding.archive.getEditText().getText().toString(),
                 binding.description.getEditText().getText().toString(),
-                "0",
+                binding.downloads.getEditText().getText().toString(),
                 Image,
                 binding.name.getEditText().getText().toString(),
-                new Rating(0,0,0,0,0),
-                Integer.parseInt(binding.sort.getEditText().getText().toString()),
-                Integer.parseInt(binding.unSort.getEditText().getText().toString()),
+                Double.parseDouble(binding.rating.getEditText().getText().toString()),
+                0,0,
                 getType(),
                 binding.version.getEditText().getText().toString(),
-                0
+                Integer.parseInt(binding.views.getEditText().getText().toString())
         );
     }
 
@@ -85,8 +84,6 @@ public class AddNewActivity extends AppCompatActivity {
             return Constants.MOD;
         } else if (binding.radio2.isChecked()) {
             return Constants.MAP;
-        } else if (binding.radio3.isChecked()) {
-            return Constants.MIX;
         }
         return "";
     }

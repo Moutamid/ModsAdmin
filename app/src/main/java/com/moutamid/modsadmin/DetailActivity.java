@@ -36,8 +36,7 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         binding.downloads.setText(itemModel.getDownloads());
-        Rating rate = itemModel.getRating();
-        double rating = (rate.getStar1() + rate.getStar2() + rate.getStar3() + rate.getStar4() + rate.getStar5()) / 5;
+        double rating = itemModel.getRating();
         binding.rating.setText(""+rating);
         binding.views.setText(""+itemModel.getViews());
         binding.name.setText(itemModel.getName());

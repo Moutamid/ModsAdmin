@@ -42,7 +42,7 @@ public class MapsFragment extends Fragment {
 
         list = new ArrayList<>();
 
-        Constants.databaseReference().child("map")
+        Constants.databaseReference().child(Constants.MAP)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

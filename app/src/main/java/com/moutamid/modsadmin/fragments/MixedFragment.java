@@ -21,10 +21,12 @@ import com.moutamid.modsadmin.databinding.FragmentMixedBinding;
 import com.moutamid.modsadmin.models.ItemModel;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class MixedFragment extends Fragment {
     FragmentMixedBinding binding;
-    ArrayList<ItemModel> list;
+    ArrayList<ItemModel> list, map, mod;
 
     public MixedFragment() {
         // Required empty public constructor
@@ -39,21 +41,44 @@ public class MixedFragment extends Fragment {
         binding.recy.setHasFixedSize(false);
 
         list = new ArrayList<>();
+        map = new ArrayList<>();
+        mod = new ArrayList<>();
 
-        Constants.databaseReference().child("mix")
+        Constants.databaseReference().child(Constants.MAP)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
-                            list.clear();
-                            for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                            map.clear();
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                                 ItemModel itemModel = dataSnapshot.getValue(ItemModel.class);
-                                list.add(itemModel);
+                                map.add(itemModel);
                             }
-
-                            ItemAdapter adapter = new ItemAdapter(binding.getRoot().getContext(), list);
-                            binding.recy.setAdapter(adapter);
                         }
+                        Constants.databaseReference().child(Constants.MOD)
+                                .addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        if (snapshot.exists()) {
+                                            mod.clear();
+                                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                                ItemModel itemModel = dataSnapshot.getValue(ItemModel.class);
+                                                mod.add(itemModel);
+                                            }
+                                        }
+                                        list.clear();
+                                        list.addAll(mod);
+                                        list.addAll(map);
+                                        Collections.shuffle(list);
+                                        ItemAdapter adapter = new ItemAdapter(binding.getRoot().getContext(), list);
+                                        binding.recy.setAdapter(adapter);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        Toast.makeText(requireContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                     }
 
                     @Override

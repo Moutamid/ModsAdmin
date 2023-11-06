@@ -61,12 +61,11 @@ public class UpdateActivity extends AppCompatActivity {
                 itemModel.getDownloads(),
                 Image,
                 binding.name.getEditText().getText().toString(),
-                itemModel.getRating(),
-                Integer.parseInt(binding.sort.getEditText().getText().toString()),
-                Integer.parseInt(binding.unSort.getEditText().getText().toString()),
+                Double.parseDouble(binding.rating.getEditText().getText().toString()),
+                0,0,
                 getType(),
                 binding.version.getEditText().getText().toString(),
-                itemModel.getViews()
+                Integer.parseInt(binding.views.getEditText().getText().toString())
         );
     }
 
@@ -114,12 +113,11 @@ public class UpdateActivity extends AppCompatActivity {
         binding.description.getEditText().setText(itemModel.getDescription());
         binding.version.getEditText().setText(itemModel.getVersion());
         binding.archive.getEditText().setText(itemModel.getArchive());
-        binding.sort.getEditText().setText(itemModel.getSort() + "");
-        binding.unSort.getEditText().setText(itemModel.getUnSort() + "");
+        binding.downloads.getEditText().setText(itemModel.getDownloads() + "");
+        binding.rating.getEditText().setText(itemModel.getRating() + "");
+        binding.views.getEditText().setText(itemModel.getViews() + "");
 
-        if (itemModel.getType().equals(Constants.MIX)) {
-            binding.radio3.setChecked(true);
-        } else if (itemModel.getType().equals(Constants.MAP)) {
+        if (itemModel.getType().equals(Constants.MAP)) {
             binding.radio2.setChecked(true);
         } else if (itemModel.getType().equals(Constants.MOD)) {
             binding.radio1.setChecked(true);
@@ -131,8 +129,6 @@ public class UpdateActivity extends AppCompatActivity {
             return Constants.MOD;
         } else if (binding.radio2.isChecked()) {
             return Constants.MAP;
-        } else if (binding.radio3.isChecked()) {
-            return Constants.MIX;
         }
         return "";
     }
